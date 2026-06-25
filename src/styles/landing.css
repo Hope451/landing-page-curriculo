@@ -178,10 +178,11 @@ a, button, [role="button"] { touch-action: manipulation; }
 }
 .hero__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+  grid-template-columns: 1fr 420px;
   gap: clamp(40px, 5vw, 72px);
   align-items: start;
 }
+.hero__grid > * { min-width: 0; }
 
 .tag {
   display: inline-flex;
@@ -831,28 +832,41 @@ a, button, [role="button"] { touch-action: manipulation; }
   .benefits__list { grid-template-columns: 1fr; }
 }
 
-/* ── MOBILE (≤ 600px) ── */
-@media (max-width: 600px) {
+/* ── MOBILE (≤ 768px) ── */
+@media (max-width: 768px) {
   :root { --pad-section: 40px; }
 
-  .container { padding-inline: 16px; }
+  html, body { overflow-x: hidden; width: 100%; }
+
+  .container { padding-inline: 20px; width: 100%; }
 
   /* hero */
-  .hero { padding: 24px 0 32px; }
-  .hero__grid { gap: 28px; }
-  .hero__title { font-size: clamp(24px, 7vw, 32px); }
-  .hero__sub { font-size: 15px; }
-  .hero__stats { gap: 12px; }
+  .hero { padding: 24px 0 32px; overflow: hidden; }
+  .hero__grid { gap: 24px; width: 100%; }
+  .hero__title {
+    font-size: clamp(30px, 8vw, 42px);
+    text-align: center;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+  .hero__sub { font-size: 15px; text-align: center; }
+  .hero__stats { gap: 12px; justify-content: center; }
+  .check-list { align-items: flex-start; }
+  .tag { display: flex; justify-content: center; }
   .stat strong { font-size: 26px; }
-  .tag { font-size: 12px; padding: 6px 12px; }
 
   /* form */
-  .hero__form-card { padding: 20px 16px; border-radius: var(--r-md); }
-  .form__group input { font-size: 16px; } /* evita zoom no iOS */
+  .hero__form-card {
+    padding: 20px 16px;
+    border-radius: var(--r-md);
+    width: 100%;
+    max-width: 100%;
+  }
+  .form__group input { font-size: 16px; }
 
   /* sections */
-  .section-title { font-size: clamp(22px, 6vw, 28px); }
-  .section-sub { font-size: 14px; margin-bottom: 32px; }
+  .section-title { font-size: clamp(22px, 6vw, 28px); text-align: center; }
+  .section-sub { font-size: 14px; margin-bottom: 32px; text-align: center; }
 
   /* problems */
   .problems__grid { grid-template-columns: 1fr; gap: 12px; }
@@ -877,7 +891,7 @@ a, button, [role="button"] { touch-action: manipulation; }
 
 /* ── MOBILE PEQUENO (≤ 380px) ── */
 @media (max-width: 380px) {
-  .hero__title { font-size: 26px; }
+  .hero__title { font-size: 28px; }
   .btn--primary, .btn--submit { font-size: 14px; padding: 13px 18px; }
   .stat strong { font-size: 22px; }
 }
