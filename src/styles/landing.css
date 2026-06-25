@@ -37,13 +37,7 @@ html { scroll-behavior: smooth; }
 }
 
 /* ── BASE ── */
-html {
-  width: 100%;
-  max-width: 100vw;
-}
 body {
-  width: 100%;
-  max-width: 100vw;
   font-family: var(--font-body);
   color: var(--text);
   background: var(--bg);
