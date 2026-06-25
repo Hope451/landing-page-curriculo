@@ -39,7 +39,7 @@ export default function Hero() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!fields.email || !emailRegex.test(fields.email.trim())) errs.email = 'Informe um e-mail válido.'
     const age = parseInt(fields.idade, 10)
-    if (!fields.idade || isNaN(age) || age < 13 || age > 22) errs.idade = 'A idade deve estar entre 13 e 22 anos.'
+    if (!fields.idade || isNaN(age) || age < 1) errs.idade = 'Informe uma idade válida.'
     return errs
   }
 
@@ -179,7 +179,7 @@ export default function Hero() {
                 <label htmlFor="idade">Idade <span className="req" aria-label="obrigatório">*</span></label>
                 <input
                   type="number" id="idade" name="idade"
-                  placeholder="Sua idade" min="13" max="22" required
+                  placeholder="Sua idade" min="1" required
                   value={fields.idade} onChange={handleChange}
                   className={errors.idade ? 'error' : fields.idade ? 'success' : ''}
                 />
