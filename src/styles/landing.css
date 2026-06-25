@@ -37,6 +37,10 @@ html { scroll-behavior: smooth; }
 }
 
 /* ── BASE ── */
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
 body {
   font-family: var(--font-body);
   color: var(--text);
@@ -177,7 +181,7 @@ a, button, [role="button"] { touch-action: manipulation; }
 }
 .hero__grid {
   display: grid;
-  grid-template-columns: 1fr 420px;
+  grid-template-columns: 1fr minmax(0, 420px);
   gap: clamp(40px, 5vw, 72px);
   align-items: start;
 }
