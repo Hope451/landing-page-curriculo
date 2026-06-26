@@ -14,7 +14,7 @@ function maskPhone(value) {
 }
 
 export default function Hero() {
-  const [fields, setFields] = useState({ nome: '', whatsapp: '', email: '', idade: '' })
+  const [fields, setFields] = useState({ nome: '', whatsapp: '', email: '', idade: '', cidade: '' })
   const [curriculo, setCurriculo] = useState(null)
   const [errors, setErrors] = useState({})
   const [success, setSuccess] = useState(false)
@@ -40,6 +40,7 @@ export default function Hero() {
     if (!fields.email || !emailRegex.test(fields.email.trim())) errs.email = 'Informe um e-mail válido.'
     const age = parseInt(fields.idade, 10)
     if (!fields.idade || isNaN(age) || age < 1) errs.idade = 'Informe uma idade válida.'
+    if (!fields.cidade || fields.cidade.trim().length < 2) errs.cidade = 'Por favor, informe sua cidade.'
     return errs
   }
 
@@ -64,6 +65,7 @@ export default function Hero() {
         whatsapp:      fields.whatsapp.trim(),
         email:         fields.email.trim(),
         idade:         Number(fields.idade),
+        cidade:        fields.cidade.trim(),
         curriculo_url: curriculo_url,
       })
 
@@ -184,6 +186,16 @@ export default function Hero() {
                   className={errors.idade ? 'error' : fields.idade ? 'success' : ''}
                 />
                 <span className="form__error" role="alert">{errors.idade}</span>
+              </div>
+              <div className="form__group">
+                <label htmlFor="cidade">Cidade <span className="req" aria-label="obrigatório">*</span></label>
+                <input
+                  type="text" id="cidade" name="cidade"
+                  placeholder="Sua cidade"
+                  value={fields.cidade} onChange={handleChange} required
+                  className={errors.cidade ? 'error' : fields.cidade ? 'success' : ''}
+                />
+                <span className="form__error" role="alert">{errors.cidade}</span>
               </div>
               <div className="form__group">
                 <label htmlFor="curriculo">Currículo <span className="field-optional">(opcional)</span></label>
