@@ -73,6 +73,12 @@ export default function Hero() {
 
       setSuccess(true)
       document.getElementById('inscricao')?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      if (window.fbq) {
+        window.fbq('track', 'Lead', {
+          content_name: 'Programa Primeiro Emprego Hope',
+          content_category: 'Cadastro',
+        });
+      }
 
     } catch (err) {
       console.error('Erro no envio:', err.message)
